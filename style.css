@@ -1107,6 +1107,25 @@ h2 {
     text-align: center;
   }
 
+
+  .hero-content {
+    /* Reset to default stacking order for mobile */
+    order: unset; 
+    /* Reset the padding added for desktop right-side layout */
+    padding-left: 0; 
+    padding-right: 0;
+  }
+
+  .hero-image {
+    /* Reset to default stacking order */
+    order: unset; 
+    /* Ensure image is centered on mobile when stacked */
+    justify-content: center; 
+  }
+
+
+
+  
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1198,4 +1217,5 @@ h2 {
     font-size: 2.8rem;
   }
 }
+
 
