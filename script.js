@@ -215,16 +215,8 @@ if (contactForm) {
     // Note: You might need to adjust the CSS/HTML to make this message display nicely.
     contactForm.appendChild(statusMessage);
 
-    // Collect form data
-    const formData = new FormData(e.target);
-    
-    // Formspree requires the email field to be named '_replyto'
-    formData.set('_replyto', formData.get('email'));
-    // We delete the original 'email' field to avoid redundancy, though Formspree handles it
-    formData.delete('email'); 
-    
-    // Convert FormData to a simple JSON object
-    const data = Object.fromEntries(formData.entries());
+    // Collect form data and convert to JSON object immediately
+    const data = Object.fromEntries(new FormData(e.target).entries());
 
     try {
       const response = await fetch(FORM_ENDPOINT, {
@@ -702,3 +694,4 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
