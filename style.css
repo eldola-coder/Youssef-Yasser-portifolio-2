@@ -1271,7 +1271,7 @@ h2 {
     .hero-content {
         
       text-align: left; 
-      
+      margin-left: 0px;
     
     }
     
@@ -1280,6 +1280,7 @@ h2 {
         
         text-align: left ;
         width: 30rem;
+        
     }
 
     .hero-buttons {
@@ -1289,9 +1290,10 @@ h2 {
     
     
     .hero-image {
-        justify-content: right;
+        
     }
 }
+
 
 
 
