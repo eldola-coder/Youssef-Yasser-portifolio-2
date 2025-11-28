@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me - Youssef Yasser</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="index.html">Youssef Yasser</a>
+        </div>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link active">About Me</a>
+          <a href="certificates.html" class="nav-link">Certificates</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>I am <span>Youssef</span></h1>
+          <p>
+            Computer Science student passionate about software development, AI,
+            and creating innovative solutions. Currently expanding my skills in
+            full-stack development and machine learning.
+          </p>
+          <div class="hero-buttons">
+            <a href="about.html" class="btn btn-primary">Explore Now</a>
+            <a href="#projects" class="btn btn-secondary">
+              <i class="fas fa-play"></i> View Projects
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="/1764031045055.jpg"
+            alt="Youssef Yasser - CU-AI NEXUS 2025"
+            class="profile-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Rest of the index.html content remains the same -->
+    <!-- Introduction Section -->
+    <section class="intro">
+      <div class="container">
+        <h2>Introduction</h2>
+        <p>
+          I'm a Computer Science student at Cairo University with a strong
+          passion for technology and software development. My journey in
+          programming started with a curiosity about how things work, and it has
+          evolved into a dedication to creating efficient, user-friendly
+          applications.
+        </p>
+        <p>
+          I enjoy tackling complex problems and transforming ideas into
+          functional software. My current focus is on expanding my knowledge in
+          full-stack development, machine learning, and exploring the
+          intersection of technology and human needs.
+        </p>
+
+        <div class="intro-grid">
+          <div class="intro-card">
+            <h3>About Me</h3>
+            <p>
+              Dedicated Computer Science student with expertise in multiple
+              programming languages and frameworks. Always eager to learn new
+              technologies and take on challenging projects.
+            </p>
+            <a href="about.html" class="read-more"
+              >Read More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="intro-card">
+            <h3>My Portfolio</h3>
+            <p>
+              Collection of projects showcasing my skills in web development,
+              software engineering, and problem-solving. Each project represents
+              a learning milestone in my development journey.
+            </p>
+            <a href="#projects" class="read-more"
+              >View Projects <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid" id="projectsContainer">
+          <!-- Projects will be loaded dynamically from GitHub -->
+          <div class="loading">Loading projects...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Programming Languages</h3>
+            <div class="skill-list">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Artificial Intelligence</h3>
+            <div class="skill-list">
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Deep Learning</span>
+              <span class="skill-tag">Modeling</span>
+              <span class="skill-tag">Pytorch</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>Tools & Technologies</h3>
+            <div class="skill-list">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>Youssef Yasser</h3>
+            <p>Computer Science Student & Developer</p>
+          </div>
+          <div class="footer-links">
+            <a
+              href="https://www.linkedin.com/in/youssef-yasser-0b9097333/"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="https://github.com/itz-youssef" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Youssef Yasser. All rights reserved.</p>
+          <p>Page | 01</p>
+        </div>
+      </div>
+    </footer>
+    <!-- Load particles.js first -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Then load your script -->
+    <script src="script.js"></script>
+  </body>
+</html>
