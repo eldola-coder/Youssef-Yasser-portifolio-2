@@ -1270,8 +1270,8 @@ h2 {
   
     .hero-content {
         
-        text-align: center; 
-        padding-left : 90rem;
+      text-align: center; 
+      padding-right: 90rem;
     }
     
     .hero-content h1, 
@@ -1290,6 +1290,7 @@ h2 {
         justify-content: center;
     }
 }
+
 
 
 
