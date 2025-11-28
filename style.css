@@ -1277,7 +1277,7 @@ h2 {
     .hero-content h1, 
     .hero-content p {
         
-        text-align: left !important;
+        text-align: left ;
     }
 
     .hero-buttons {
@@ -1290,6 +1290,7 @@ h2 {
         justify-content: center;
     }
 }
+
 
 
 
