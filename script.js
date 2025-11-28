@@ -195,23 +195,71 @@ document.querySelectorAll(".nav-link").forEach((n) =>
 
 // Contact form handling
 const contactForm = document.getElementById("contactForm");
+const FORM_ENDPOINT = "https://formspree.io/f/xeobvplw"; // 
+
 if (contactForm) {
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Stop the page from redirecting
 
-    // Get form values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
+    // Create a status message element
+    const statusMessage = document.createElement('p');
+    statusMessage.className = "text-center mt-3";
+    statusMessage.style.color = "var(--primary)";
+    statusMessage.textContent = "Sending...";
+    
+    // Disable button and show "Sending..." message
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    
+    // Find a good place to insert the message (before the button is often best)
+    // Note: You might need to adjust the CSS/HTML to make this message display nicely.
+    contactForm.appendChild(statusMessage);
 
-    // In a real application, you would send this data to a server
-    // For this example, we'll just show an alert
-    alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
+    // Collect form data
+    const formData = new FormData(e.target);
+    
+    // Formspree requires the email field to be named '_replyto'
+    formData.set('_replyto', formData.get('email'));
+    // We delete the original 'email' field to avoid redundancy, though Formspree handles it
+    formData.delete('email'); 
+    
+    // Convert FormData to a simple JSON object
+    const data = Object.fromEntries(formData.entries());
 
-    // Reset form
-    contactForm.reset();
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        statusMessage.textContent = "✅ Message sent successfully! I'll be in touch soon.";
+        statusMessage.style.color = "green";
+        contactForm.reset(); // Reset form on success
+      } else {
+        // Handle Formspree errors (e.g., rate limiting, missing fields)
+        statusMessage.textContent = "❌ Submission failed. Please try again or check Formspree settings.";
+        statusMessage.style.color = "red";
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      statusMessage.textContent = "❌ An unexpected error occurred. Check your connection.";
+      statusMessage.style.color = "red";
+    } finally {
+        submitButton.disabled = false;
+        // Remove the status message after 5 seconds
+        setTimeout(() => {
+            if(statusMessage.parentNode) {
+                statusMessage.parentNode.removeChild(statusMessage);
+            }
+        }, 5000); 
+    }
   });
+
 }
 
 // Smooth scrolling for anchor links
