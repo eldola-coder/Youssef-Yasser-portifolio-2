@@ -1143,6 +1143,10 @@ h2 {
     display: flex;
   }
 
+  .nav-container {
+    padding: 5rem 5rem; /* Reduced from default browser/container padding */
+  }
+  
   .nav-menu {
     position: fixed;
     left: -100%;
@@ -1217,5 +1221,6 @@ h2 {
     font-size: 2.8rem;
   }
 }
+
 
 
