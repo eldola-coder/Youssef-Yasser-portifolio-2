@@ -1270,19 +1270,19 @@ h2 {
   
     .hero-content {
         
-      text-align: center; 
+      text-align: left; 
       padding-right: 50rem;
     }
     
     .hero-content h1, 
     .hero-content p {
         
-        text-align: center;
+        text-align: left !important;
     }
 
     .hero-buttons {
         
-        justify-content: center; 
+        justify-content: flex-start; 
     }
     
     
@@ -1290,6 +1290,7 @@ h2 {
         justify-content: center;
     }
 }
+
 
 
 
