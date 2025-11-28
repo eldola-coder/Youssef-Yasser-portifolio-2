@@ -1259,9 +1259,15 @@ h2 {
 
 
 /* --- IPAD LANDSCAPE / WIDE TABLET ALIGNMENT FIX (e.g., 1024px to 1200px) --- */
-@media (min-width: 1024px) and (max-width: 1200px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
     
-    
+    .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+   }
+
+  
     .hero-content {
         
         text-align: center; 
@@ -1283,6 +1289,7 @@ h2 {
         justify-content: center;
     }
 }
+
 
 
 
