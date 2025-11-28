@@ -1253,7 +1253,7 @@ h2 {
 
 
 /* --- IPAD LANDSCAPE / WIDE TABLET ALIGNMENT FIX (e.g., 1024px to 1200px) --- */
-@media (min-width: 1024px) and (max-width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1200px) {
     
     
     .hero-content {
@@ -1277,6 +1277,7 @@ h2 {
         justify-content: center;
     }
 }
+
 
 
 
