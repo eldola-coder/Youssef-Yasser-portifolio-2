@@ -1223,33 +1223,7 @@ h2 {
 }
 
 
-/* --- TABLET PORTRAIT ALIGNMENT FIX (769px to 991px) --- */
-@media (min-width: 769px) and (max-width: 991px) {
-    /* * Target the content column when it is in the single-column range,
-     * or when it is too narrow to look right in the two-column view.
-     */
-    .hero-content {
-        /* Ensure text is left-aligned in this specific tablet range */
-        text-align: left; 
-    }
-    
-    .hero-content h1, 
-    .hero-content p {
-        /* Force text within content block to align left */
-        text-align: left !important;
-    }
 
-    .hero-buttons {
-        /* Force buttons to align left */
-        justify-content: flex-start;
-    }
-
-    /* Optional: If the image is still too big on tablet, you can adjust its container */
-    .hero-image {
-        /* Center the image when in a stacked column on a tablet */
-        justify-content: center;
-    }
-}
 
 
 
