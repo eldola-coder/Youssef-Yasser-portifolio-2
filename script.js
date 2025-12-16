@@ -445,7 +445,7 @@ const certificatesData = [
   },
   {
     id: 5,
-    title: "Python Certificate",
+    title: "Python Certificate 3 Hours",
     description:
       "Given the Fundamentals title and the 3-hour duration, this course likely provided a rapid, foundational overview suitable for beginners or those needing a quick refresher.Core Syntax: Familiarity with Python's basic syntax, including variables, data types, and operators.Control Flow: Understanding of loops (for/while) and conditional statements (if/else).Basic Scripting: The ability to write simple scripts to automate tasks or solve basic logical problems.Environment Setup: Experience setting up a Python development environment.",
     category: "programming",
@@ -460,7 +460,7 @@ const certificatesData = [
 
   {
     id: 6,
-    title: "E:\Me\myprotofolio 2\certificate.jpeg",
+    title: "C Plus Plus Certificate 13 Hours ",
     description:
       "This is a much more extensive course (13.5 hours compared to 3), suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
            
@@ -724,5 +724,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
