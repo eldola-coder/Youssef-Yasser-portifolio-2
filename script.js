@@ -445,7 +445,7 @@ const certificatesData = [
   },
   {
     id: 5,
-    title: "Python Certificate -  3 Hours",
+    title: "Python Dev Certificate -  3 Hours",
     description:
       "Given the Fundamentals title and the 3-hour duration, this course likely provided a rapid, foundational overview suitable for beginners or those needing a quick refresher.Core Syntax: Familiarity with Python's basic syntax, including variables, data types, and operators.Control Flow: Understanding of loops (for/while) and conditional statements (if/else).Basic Scripting: The ability to write simple scripts to automate tasks or solve basic logical problems.Environment Setup: Experience setting up a Python development environment.",
     category: "programming",
@@ -724,6 +724,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
