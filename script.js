@@ -453,7 +453,7 @@ const certificatesData = [
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "E:\Me\myprotofolio 2\certificate2.jpeg",
+    image: "media/certificate2.jpeg",
     icon: "python",
 
   },
@@ -469,7 +469,7 @@ const certificatesData = [
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "E:\Me\myprotofolio 2\certificate.jpeg",
+    image: "media/certificate/jpeg",
     icon: "code",
 
   },
@@ -724,6 +724,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
