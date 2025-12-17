@@ -708,41 +708,8 @@ document.addEventListener("DOMContentLoaded", function () {
   setupCertificatesFiltering();
   setupCertificateModal();
 });
-// WARNING: Replace this with your actual Render URL after you deploy to Render.com
-const RENDER_URL = "https://youssef-backend.onrender.com/chat"; 
 
-function toggleChat() {
-    const win = document.getElementById('chat-box');
-    win.style.display = win.style.display === 'none' ? 'flex' : 'none';
-}
 
-async function handleSend() {
-    const input = document.getElementById('user-input');
-    const msgContainer = document.getElementById('chat-messages');
-    const text = input.value.trim();
-    
-    if (!text) return;
-
-    // 1. Show your message
-    msgContainer.innerHTML += `<div style="align-self: flex-end; background: #00f2fe; color: black; padding: 8px 12px; border-radius: 10px; max-width: 80%;">${text}</div>`;
-    input.value = "";
-
-    try {
-        // 2. Send to your Python Backend
-        const response = await fetch(RENDER_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text })
-        });
-        const data = await response.json();
-        
-        // 3. Show AI response
-        msgContainer.innerHTML += `<div style="align-self: flex-start; background: #1a1c2c; color: white; padding: 8px 12px; border-radius: 10px; max-width: 80%; border: 1px solid #333;">${data.reply}</div>`;
-        msgContainer.scrollTop = msgContainer.scrollHeight;
-    } catch (err) {
-        msgContainer.innerHTML += `<div style="color: red; font-size: 11px; text-align: center;">Error connecting to AI. Make sure the backend is live.</div>`;
-    }
-}
 // Add CSS for particles positioning and animations
 const style = document.createElement("style");
 style.textContent = `
@@ -792,5 +759,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
