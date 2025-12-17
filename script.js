@@ -436,7 +436,7 @@ const certificatesData = [
     description:
       "Achieved Honorable Mention in the International Collegiate Programming Contest (ICPC) ECPC Qualifications, demonstrating strong problem-solving and algorithmic programming skills.",
     category: "programming",
-    issuer: "ICPC Foundation - Cairo University FCAI",
+    issuer: "ICPC Foundation ",
     date: "2024-07-24",
     rating: 4.9,
     link: "#",
@@ -724,6 +724,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
