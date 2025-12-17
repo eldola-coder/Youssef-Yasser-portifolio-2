@@ -501,7 +501,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "javaa.jpeg",
+    image: "media/javaa.jpeg",
     icon: "code",
 
   },
@@ -756,6 +756,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
