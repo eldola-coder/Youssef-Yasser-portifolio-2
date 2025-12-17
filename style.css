@@ -520,6 +520,8 @@ h2 {
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
 }
 
 .education-item h4 {
@@ -1101,6 +1103,24 @@ h2 {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+
+
+.edu-image{
+  width: 200px;
+  height: 200px;
+}
+
+#cairo-uni{
+  background-image: url("media/cairo-uni.jpg");
+}
+
+#ai{
+  background-image: url("media/Udemy.jpg");
+}
+
+#ai2{
+  background-image: url("media/Coursera.png");
 }
 
 /* Responsive Design */
