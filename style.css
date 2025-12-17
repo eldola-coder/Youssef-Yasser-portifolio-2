@@ -1371,3 +1371,65 @@ h2 {
     }
 }
 
+@media (max-width: 768px) {
+
+    /* 1. The Menu Container */
+    .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -280px !important;   /* Hidden to the right */
+        left: auto !important;      /* Disable left */
+        
+        width: 280px !important;
+        height: 100vh !important;
+        
+        background-color: var(--nav-bg) !important; 
+        box-shadow: -5px 0 20px rgba(0,0,0,0.2) !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 2rem !important; /* Increased gap for better spacing */
+        z-index: 2000 !important;
+        transition: right 0.3s ease-in-out !important;
+    }
+
+    /* 2. ADD THE ICON AT THE TOP */
+    .nav-menu::before {
+        content: "\f0c9";           /* This is the FontAwesome code for a "Menu" icon */
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        font-size: 3rem !important; /* Make it big */
+        color: var(--primary) !important;
+        margin-bottom: 1rem !important;
+        opacity: 0.8 !important;
+    }
+
+    /* 3. Slide In Animation */
+    .nav-menu.active {
+        right: 0 !important;
+    }
+
+    /* 4. The Links */
+    .nav-link {
+        color: var(--text-color) !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1rem !important;
+        width: 100% !important;
+        text-align: center !important;
+        transition: color 0.3s !important;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        color: var(--primary) !important;
+    }
+
+    /* 5. Hamburger on top */
+    .hamburger {
+        z-index: 2001 !important;
+        position: relative;
+    }
+}
+
