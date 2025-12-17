@@ -186,19 +186,9 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- Then load your script -->
     <script src="script.js"></script>
-    <div id="ai-chat" style="position: fixed; bottom: 20px; right: 20px; font-family: sans-serif; z-index: 1000;">
-    <div id="chat-box" style="display: none; width: 320px; height: 450px; background: #0b0d17; border: 2px solid #00f2fe; border-radius: 15px; flex-direction: column; overflow: hidden; box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);">
-        <div style="background: #00f2fe; color: black; padding: 15px; font-weight: bold; display: flex; justify-content: space-between;">
-            <span>Youssef's AI</span>
-            <button onclick="document.getElementById('chat-box').style.display='none'" style="background:none; border:none; cursor:pointer;">✖</button>
-        </div>
-        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; color: white; display: flex; flex-direction: column; gap: 10px;"></div>
-        <div style="display: flex; padding: 10px; border-top: 1px solid #333;">
-            <input type="text" id="user-input" placeholder="Ask about my AI projects..." style="flex: 1; background: #1a1c2c; border: none; color: white; padding: 10px; border-radius: 5px;">
-            <button onclick="handleSend()" style="background: #00f2fe; border: none; padding: 10px; margin-left: 5px; border-radius: 5px; cursor: pointer; font-weight: bold;">Send</button>
-        </div>
-    </div>
-    <button onclick="toggleChat()" style="width: 60px; height: 60px; border-radius: 50%; background: #00f2fe; border: none; font-size: 24px; cursor: pointer;">🤖</button>
-</div>
+      <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="B1iI38dcWet-pKDPhMT4e";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+      </script>
   </body>
 </html>
+
