@@ -473,6 +473,22 @@ const certificatesData = [
     icon: "code",
 
   },
+
+  {
+    id: 7,
+    title: "Personal Productivity & Life planning Certificate ",
+    description:
+      "This course focuses on goal setting, time management, habit building, and prioritization techniques to improve personal effectiveness and long-term planning. It emphasizes discipline, consistency, and practical strategies for balancing academic, personal, and professional responsibilities.",
+           
+    category: "soft-skills",
+    issuer: "Udemy",
+    date: "2025-12-17",
+    rating: 5.0,
+    link: "#",
+    image: "E:\Me\myprotofolio 2\media\softskills.jpeg",
+    icon: "code",
+
+  },
 ];
 
 // Generate certificates
@@ -724,6 +740,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
