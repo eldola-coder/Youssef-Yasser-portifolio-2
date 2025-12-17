@@ -489,6 +489,22 @@ const certificatesData = [
     icon: "code",
 
   },
+
+  {
+    id: 8,
+    title: "Java Programming ",
+    description:
+      "This course covers building desktop applications using JavaFX, focusing on user interface design, event handling, scene management, and integrating application logic with graphical components. It emphasizes creating responsive, well-structured GUI applications in Java.",
+           
+    category: "programming",
+    issuer: "ITI",
+    date: "2025-12-17",
+    rating: 5.0,
+    link: "#",
+    image: "javaa.jpeg",
+    icon: "code",
+
+  },
 ];
 
 // Generate certificates
@@ -740,6 +756,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
