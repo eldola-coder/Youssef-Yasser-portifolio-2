@@ -52,7 +52,7 @@ function initParticles() {
 
   try {
     const currentTheme = document.documentElement.getAttribute("data-theme");
-    const particleColor = currentTheme === "dark" ? "#4da8da" : "#d16af4";
+    const particleColor = currentTheme === "dark" ? "#4da8da" : "#ca42f7ff";
     const lineColor = currentTheme === "dark" ? "#4da8da" : "#d16af4";
 
     particlesJS("particles-js", {
@@ -217,7 +217,7 @@ if (contactForm) {
 
     // Collect form data and convert to JSON object immediately
     const data = Object.fromEntries(new FormData(e.target).entries());
-
+  
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -443,9 +443,10 @@ const certificatesData = [
     image: "media/ECPC.jpg",
     icon: "code",
   },
+
   {
     id: 5,
-    title: "Python Dev Certificate -  3 Hours",
+    title: "Python Certificate",
     description:
       "Given the Fundamentals title and the 3-hour duration, this course likely provided a rapid, foundational overview suitable for beginners or those needing a quick refresher.Core Syntax: Familiarity with Python's basic syntax, including variables, data types, and operators.Control Flow: Understanding of loops (for/while) and conditional statements (if/else).Basic Scripting: The ability to write simple scripts to automate tasks or solve basic logical problems.Environment Setup: Experience setting up a Python development environment.",
     category: "programming",
@@ -453,23 +454,23 @@ const certificatesData = [
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "media/certificate2.jpeg",
+    image: "E:\Me\myprotofolio 2\certificate2.jpeg",
     icon: "python",
 
   },
 
   {
     id: 6,
-    title: "C Plus Plus Certificate - 13 Hours ",
+    title: "C Plus Plus Certificate ",
     description:
-      "This course is going into a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
+      "This is a much more extensive course (13.5 hours compared to 3), suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
            
     category: "programming",
     issuer: "Udemy",
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "media/certificate.jpeg",
+    image: "E:\Me\myprotofolio 2\certificate.jpeg",
     icon: "code",
 
   },
@@ -485,7 +486,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "media/Softskills.jpeg",
+    image: "E:\Me\myprotofolio 2\media\softskills.jpeg",
     icon: "code",
 
   },
@@ -501,7 +502,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "media/javaa.jpeg",
+    image: "E:\Me\myprotofolio 2\media\javaa.jpeg",
     icon: "code",
 
   },
@@ -654,6 +655,7 @@ function setupCertificatesFiltering() {
   });
 }
 
+
 // Modal functionality for certificate preview
 function setupCertificateModal() {
   const modal = document.getElementById("certificateModal");
@@ -706,7 +708,41 @@ document.addEventListener("DOMContentLoaded", function () {
   setupCertificatesFiltering();
   setupCertificateModal();
 });
+// WARNING: Replace this with your actual Render URL after you deploy to Render.com
+const RENDER_URL = "https://youssef-backend.onrender.com/chat"; 
 
+function toggleChat() {
+    const win = document.getElementById('chat-box');
+    win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+}
+
+async function handleSend() {
+    const input = document.getElementById('user-input');
+    const msgContainer = document.getElementById('chat-messages');
+    const text = input.value.trim();
+    
+    if (!text) return;
+
+    // 1. Show your message
+    msgContainer.innerHTML += `<div style="align-self: flex-end; background: #00f2fe; color: black; padding: 8px 12px; border-radius: 10px; max-width: 80%;">${text}</div>`;
+    input.value = "";
+
+    try {
+        // 2. Send to your Python Backend
+        const response = await fetch(RENDER_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
+        });
+        const data = await response.json();
+        
+        // 3. Show AI response
+        msgContainer.innerHTML += `<div style="align-self: flex-start; background: #1a1c2c; color: white; padding: 8px 12px; border-radius: 10px; max-width: 80%; border: 1px solid #333;">${data.reply}</div>`;
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+    } catch (err) {
+        msgContainer.innerHTML += `<div style="color: red; font-size: 11px; text-align: center;">Error connecting to AI. Make sure the backend is live.</div>`;
+    }
+}
 // Add CSS for particles positioning and animations
 const style = document.createElement("style");
 style.textContent = `
@@ -756,17 +792,5 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
