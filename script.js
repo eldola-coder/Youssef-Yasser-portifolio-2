@@ -454,7 +454,7 @@ const certificatesData = [
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "E:\Me\myprotofolio 2\certificate2.jpeg",
+    image: "media/certificate2.jpeg",
     icon: "python",
 
   },
@@ -463,14 +463,14 @@ const certificatesData = [
     id: 6,
     title: "C Plus Plus Certificate ",
     description:
-      "This is a much more extensive course (13.5 hours compared to 3), suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
+      "This is a much more extensive course , suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
            
     category: "programming",
     issuer: "Udemy",
     date: "2025-12-16",
     rating: 4.6,
     link: "#",
-    image: "E:\Me\myprotofolio 2\certificate.jpeg",
+    image: "media/certificate.jpeg",
     icon: "code",
 
   },
@@ -486,7 +486,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "E:\Me\myprotofolio 2\media\softskills.jpeg",
+    image: "media/softskills.jpeg",
     icon: "code",
 
   },
@@ -502,7 +502,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "E:\Me\myprotofolio 2\media\javaa.jpeg",
+    image: "media/javaa.jpeg",
     icon: "code",
 
   },
@@ -759,6 +759,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
