@@ -486,7 +486,7 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "media/softskills.jpeg",
+    image: "media/Softskills.jpeg",
     icon: "code",
 
   },
@@ -759,6 +759,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
