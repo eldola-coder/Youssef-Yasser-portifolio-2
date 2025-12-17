@@ -1109,18 +1109,22 @@ h2 {
 .edu-image{
   width: 200px;
   height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #cairo-uni{
-  background-image: url("media/cairo-uni.jpg");
+  background-image: url("./media/cairo-uni.jpg");
 }
 
 #ai{
-  background-image: url("media/Udemy.jpg");
+
+  background-image: url("./media/Udemy.webp");
 }
 
 #ai2{
-  background-image: url("media/Coursera.png");
+  background-image: url("./media/Coursera.png");
 }
 
 /* Responsive Design */
