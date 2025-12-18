@@ -471,7 +471,7 @@ const certificatesData = [
     rating: 4.6,
     link: "#",
     image: "media/certificate.jpeg",
-    icon: "code",
+    icon: "cuttlefish",
 
   },
 
@@ -487,7 +487,7 @@ const certificatesData = [
     rating: 5.0,
     link: "#",
     image: "media/Softskills.jpeg",
-    icon: "code",
+    icon: "brain",
 
   },
 
@@ -503,8 +503,22 @@ const certificatesData = [
     rating: 5.0,
     link: "#",
     image: "media/javaa.jpeg",
-    icon: "code",
+    icon: "java",
 
+  },
+
+  {
+    id: 9,
+    title: "AI Basics",
+    description:
+      "This course introduces learners to the fundamentals of Artificial Intelligence and Machine Learning, focusing on how intelligent systems work and how they are applied in real-world scenarios. Students will explore key concepts such as machine learning, deep learning, computer vision, and natural language processing, as well as the ethical and responsible use of AI. The course helps develop critical thinking and provides a practical understanding of how AI technologies support decision-making and problem-solving in everyday life.",
+    category: "ai",
+    issuer: "Udemy ",
+    date: "2025-12-18",
+    rating: 4.1,
+    link: "#",
+    image: "media/Ai_basics.jpg",
+    icon: "brain",
   },
 ];
 
@@ -759,6 +773,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
