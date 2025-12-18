@@ -441,7 +441,7 @@ const certificatesData = [
     rating: 4.9,
     link: "#",
     image: "media/ECPC.jpg",
-    icon: "code",
+    icon: "cuttlefish",
   },
 
   {
@@ -773,6 +773,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
 
