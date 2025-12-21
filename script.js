@@ -441,7 +441,7 @@ const certificatesData = [
     rating: 4.9,
     link: "#",
     image: "media/ECPC.jpg",
-    icon: "cuttlefish",
+    icon: "code",
   },
 
   {
@@ -463,7 +463,7 @@ const certificatesData = [
     id: 6,
     title: "C Plus Plus Certificate ",
     description:
-      "This is a much more extensive course , suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
+      "This is a much more extensive course (13.5 hours compared to 3), suggesting a deeper dive into the language's complexities Comprehensive C++ Fundamentals: A strong grasp of C++ syntax, input/output, and structure. Object-Oriented Programming (OOP): Likely covered classes, objects, inheritance, and polymorphism, which are central to C++. Memory Management: Understanding of pointers and references, a critical aspect of C++ that distinguishes it from languages like Python. Problem Solving: The Mastering  aspect implies you worked through more complex coding challenges or logic puzzles during the course.",
            
     category: "programming",
     issuer: "Udemy",
@@ -471,7 +471,7 @@ const certificatesData = [
     rating: 4.6,
     link: "#",
     image: "media/certificate.jpeg",
-    icon: "cuttlefish",
+    icon: "code",
 
   },
 
@@ -486,8 +486,8 @@ const certificatesData = [
     date: "2025-12-17",
     rating: 5.0,
     link: "#",
-    image: "media/Softskills.jpeg",
-    icon: "brain",
+    image: "media/softskills.jpeg",
+    icon: "code",
 
   },
 
@@ -503,7 +503,7 @@ const certificatesData = [
     rating: 5.0,
     link: "#",
     image: "media/javaa.jpeg",
-    icon: "java",
+    icon: "code",
 
   },
 
@@ -515,10 +515,10 @@ const certificatesData = [
     category: "ai",
     issuer: "Udemy ",
     date: "2025-12-18",
-    rating: 4.1,
+    rating: 4.7,
     link: "#",
     image: "media/Ai_basics.jpg",
-    icon: "brain",
+    icon: "chart-line",
   },
 ];
 
@@ -723,6 +723,72 @@ document.addEventListener("DOMContentLoaded", function () {
   setupCertificateModal();
 });
 
+const SHEET_ID = '1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs';
+const API_KEY = 'AIzaSyDApsCPIpowQgZ1IwHmrk1VOGPRknBtJMg';
+
+async function updatePortfolioFromSheets() {
+  try {
+    // 1. FETCH GENERAL SETTINGS (Sheet1)
+    const settingsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1!A1:B20?key=${API_KEY}`;
+    const settingsResponse = await fetch(settingsUrl);
+    const settingsData = await settingsResponse.json();
+    
+    if (settingsData.values) {
+      const rows = settingsData.values;
+      
+      // Update Images & Text (Safe checks for multiple pages)
+      const profileImg = rows.find(r => r[0] === 'profile_img');
+      if (profileImg) document.querySelectorAll('.profile-image').forEach(img => img.src = profileImg[1]);
+
+      const heroName = rows.find(r => r[0] === 'hero_title');
+      if (heroName && document.querySelector('.hero-content h1 span')) 
+          document.querySelector('.hero-content h1 span').innerText = heroName[1];
+
+      const visionText = rows.find(r => r[0] === 'vision_text');
+      if (visionText) {
+          const vHeader = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.trim() === "My Vision");
+          if (vHeader && vHeader.nextElementSibling) vHeader.nextElementSibling.innerText = visionText[1];
+      }
+    }
+
+    // 2. FETCH CERTIFICATES (Certificates Tab)
+    const certsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Certificates!A2:G50?key=${API_KEY}`;
+    const certsResponse = await fetch(certsUrl);
+    const certsData = await certsResponse.json();
+    const certContainer = document.getElementById('certificatesContainer');
+
+    if (certsData.values && certContainer) {
+      certContainer.innerHTML = ''; // Clear hardcoded ones
+      
+      certsData.values.forEach(row => {
+        // Build the HTML for each certificate card
+        const card = `
+          <div class="certificate-card fade-in" data-category="${row[3]}">
+            <img src="${row[5]}" alt="${row[0]}" class="certificate-image">
+            <div class="certificate-content">
+              <span class="certificate-category">${row[3]}</span>
+              <h3>${row[0]}</h3>
+              <p>${row[4]}</p>
+              <div class="certificate-meta">
+                <span><i class="fas fa-university"></i> ${row[1]}</span>
+                <span><i class="far fa-calendar"></i> ${row[2]}</span>
+              </div>
+              <div class="certificate-footer">
+                <a href="${row[5]}" target="_blank" class="certificate-link">View Certificate</a>
+                <span class="certificate-rating"><i class="fas fa-star"></i> ${row[6]}</span>
+              </div>
+            </div>
+          </div>`;
+        certContainer.innerHTML += card;
+      });
+    }
+  } catch (error) {
+    console.error('Error updating from Sheets:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updatePortfolioFromSheets);
+
 
 // Add CSS for particles positioning and animations
 const style = document.createElement("style");
@@ -773,10 +839,5 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-
-
-
-
 
 
