@@ -498,18 +498,6 @@ async function fetchSettings() {
 }
 
 
-// Add this helper function at the top of your script or inside fetchCertificates
-function convertToDirectLink(url) {
-  if (!url || !url.includes("drive.google.com")) return url;
-  
-  // Extract the File ID using a Regular Expression
-  const match = url.match(/\/d\/(.+?)\/(view|edit|usp)/) || url.match(/id=(.+?)(&|$)/);
-  const fileId = match ? match[1] : null;
-
-  // Return the direct web content link format
-  return fileId ? `https://drive.google.com/uc?export=view&id=${fileId}` : url;
-}
-
 
 
 async function fetchCertificates() {
@@ -527,7 +515,7 @@ async function fetchCertificates() {
       date: r[2] || "",
       category: r[3] || "programming",
       description: r[4] || "",
-      image: convertToDirectLink(r[5] || ""),
+      image: r[5] || "",
       rating: Number(r[6] || 0),
       icon:
         r[3] === "ai"
@@ -638,6 +626,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
