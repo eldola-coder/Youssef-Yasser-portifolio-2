@@ -556,13 +556,22 @@ function applySettings(data) {
   }
 }
 
-// ONE single init
+// Function to hide the preloader
+function hidePreloader() {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.classList.add("loader-hidden");
+  }
+}
+
+// Updated single init
 document.addEventListener("DOMContentLoaded", async () => {
   setActiveNavigation();
   observeAnimatedElements();
   fetchGitHubProjects();
 
   try {
+    // 1. Fetch all API data
     const settings = await fetchSettings();
     applySettings(settings);
 
@@ -575,6 +584,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   } catch (e) {
     console.error("Sheets sync failed:", e);
+  } finally {
+    // 2. Hide the loader whether it succeeded or failed
+    // We add a tiny delay (500ms) for a smoother transition
+    setTimeout(hidePreloader, 500);
   }
 });
 
@@ -626,6 +639,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
