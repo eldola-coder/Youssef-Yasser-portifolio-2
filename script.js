@@ -1,18 +1,3 @@
-window.clearPortfolioCache = function() {
-  console.log("Clearing cache...");
-  localStorage.removeItem("portfolio_settings");
-  localStorage.removeItem("portfolio_certs");
-  
-  // Optional: Add a visual hint so you know it worked
-  
-  
-  location.reload(); 
-};
-
-// Helper to handle LocalStorage
-const cacheData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
-const getCachedData = (key) => JSON.parse(localStorage.getItem(key));
-
 // Theme functionality
 const themeToggle = document.getElementById("themeToggle");
 let currentTheme = localStorage.getItem("theme") || "light";
@@ -504,36 +489,24 @@ function setupCertificateModal() {
 const SHEET_ID = "1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs";
 const API_KEY = "AIzaSyDApsCPIpowQgZ1IwHmrk1VOGPRknBtJMg";
 
-
-
-// Update fetchSettings to use Cache
-async function getSettings() {
-  const cachedSettings = getCachedData("portfolio_settings");
-  if (cachedSettings) return cachedSettings;
-
+async function fetchSettings() {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1!A1:B50?key=${API_KEY}`;
   const res = await fetch(url);
   const json = await res.json();
   if (!json.values) return {};
-  
-  const settings = Object.fromEntries(json.values);
-  cacheData("portfolio_settings", settings); // Save for next time
-  return settings;
+  return Object.fromEntries(json.values);
 }
 
 
 
 
-async function getCertificates() {
-  const cachedCerts = getCachedData("portfolio_certs");
-  if (cachedCerts) return cachedCerts;
-
+async function fetchCertificates() {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Certificates!A2:G200?key=${API_KEY}`;
   const res = await fetch(url);
   const json = await res.json();
   const rows = json.values || [];
 
-  const certs = rows
+  return rows
     .filter((r) => r.length >= 4 && r[0])
     .map((r, idx) => ({
       id: idx + 1,
@@ -544,12 +517,14 @@ async function getCertificates() {
       description: r[4] || "",
       image: r[5] || "",
       rating: Number(r[6] || 0),
-      icon: r[3] === "ai" ? "brain" : r[3] === "soft-skills" ? "user" : "code",
+      icon:
+        r[3] === "ai"
+          ? "brain"
+          : r[3] === "soft-skills"
+          ? "user"
+          : "code",
       link: "#",
     }));
-
-  cacheData("portfolio_certs", certs); // Save for next time
-  return certs;
 }
 
 function applySettings(data) {
@@ -591,31 +566,32 @@ function hidePreloader() {
   }
 }
 
+// Updated single init
 document.addEventListener("DOMContentLoaded", async () => {
   setActiveNavigation();
   observeAnimatedElements();
-  fetchGitHubProjects(); // GitHub repos usually change often, but you can cache this too!
+  fetchGitHubProjects();
 
   try {
-    // These will now check LocalStorage first!
-    const settings = await getSettings();
+    // 1. Fetch all API data
+    const settings = await fetchSettings();
     applySettings(settings);
 
     const certContainer = document.getElementById("certificatesContainer");
     if (certContainer) {
-      certificatesData = await getCertificates();
+      certificatesData = await fetchCertificates();
       generateCertificates(certificatesData);
       setupCertificatesFiltering();
       setupCertificateModal();
     }
   } catch (e) {
-    console.error("Data loading failed:", e);
+    console.error("Sheets sync failed:", e);
   } finally {
-    // Hide preloader
-    setTimeout(hidePreloader, 400); 
+    // 2. Hide the loader whether it succeeded or failed
+    // We add a tiny delay (500ms) for a smoother transition
+    setTimeout(hidePreloader, 500);
   }
 });
-
 
 
 // Add CSS for particles positioning and animations
