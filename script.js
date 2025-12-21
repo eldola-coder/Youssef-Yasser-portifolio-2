@@ -726,69 +726,78 @@ document.addEventListener("DOMContentLoaded", function () {
 const SHEET_ID = '1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs';
 const API_KEY = 'AIzaSyDApsCPIpowQgZ1IwHmrk1VOGPRknBtJMg';
 
+// --- 1. THEME & PARTICLES (Your existing logic) ---
+function setInitialTheme() {
+  const currentTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  setTimeout(initParticles, 100);
+}
+
+// ... (Keep your initParticles and updateThemeIcon functions here) ...
+
+// --- 2. GOOGLE SHEETS API (The "Master Controller") ---
 async function updatePortfolioFromSheets() {
   try {
-    // 1. FETCH GENERAL SETTINGS (Sheet1)
+    // FETCH SETTINGS
     const settingsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1!A1:B20?key=${API_KEY}`;
-    const settingsResponse = await fetch(settingsUrl);
-    const settingsData = await settingsResponse.json();
+    const sRes = await fetch(settingsUrl);
+    const sData = await sRes.json();
     
-    if (settingsData.values) {
-      const rows = settingsData.values;
-      
-      // Update Images & Text (Safe checks for multiple pages)
-      const profileImg = rows.find(r => r[0] === 'profile_img');
-      if (profileImg) document.querySelectorAll('.profile-image').forEach(img => img.src = profileImg[1]);
-
-      const heroName = rows.find(r => r[0] === 'hero_title');
-      if (heroName && document.querySelector('.hero-content h1 span')) 
-          document.querySelector('.hero-content h1 span').innerText = heroName[1];
-
-      const visionText = rows.find(r => r[0] === 'vision_text');
-      if (visionText) {
-          const vHeader = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.trim() === "My Vision");
-          if (vHeader && vHeader.nextElementSibling) vHeader.nextElementSibling.innerText = visionText[1];
+    if (sData.values) {
+      const data = Object.fromEntries(sData.values);
+      // Update Images
+      if (data.profile_img) document.querySelectorAll('.profile-image').forEach(img => img.src = data.profile_img);
+      // Update Hero
+      if (document.querySelector('.hero-content h1 span')) {
+          document.querySelector('.hero-content h1 span').innerText = data.hero_name || 'Youssef';
+          document.querySelector('.hero-content p').innerText = data.hero_desc || '';
+      }
+      // Update Vision/Mission
+      if (data.vision_text) {
+          const vH = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.trim() === "My Vision");
+          if (vH && vH.nextElementSibling) vH.nextElementSibling.innerText = data.vision_text;
       }
     }
 
-    // 2. FETCH CERTIFICATES (Certificates Tab)
-    const certsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Certificates!A2:G50?key=${API_KEY}`;
-    const certsResponse = await fetch(certsUrl);
-    const certsData = await certsResponse.json();
+    // FETCH CERTIFICATES
     const certContainer = document.getElementById('certificatesContainer');
+    if (certContainer) {
+      const cUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Certificates!A2:G50?key=${API_KEY}`;
+      const cRes = await fetch(cUrl);
+      const cData = await cRes.json();
 
-    if (certsData.values && certContainer) {
-      certContainer.innerHTML = ''; // Clear hardcoded ones
-      
-      certsData.values.forEach(row => {
-        // Build the HTML for each certificate card
-        const card = `
-          <div class="certificate-card fade-in" data-category="${row[3]}">
-            <img src="${row[5]}" alt="${row[0]}" class="certificate-image">
-            <div class="certificate-content">
-              <span class="certificate-category">${row[3]}</span>
-              <h3>${row[0]}</h3>
-              <p>${row[4]}</p>
-              <div class="certificate-meta">
-                <span><i class="fas fa-university"></i> ${row[1]}</span>
-                <span><i class="far fa-calendar"></i> ${row[2]}</span>
+      if (cData.values) {
+        certContainer.innerHTML = ''; // Clear hardcoded HTML
+        cData.values.forEach(row => {
+          certContainer.innerHTML += `
+            <div class="certificate-card fade-in" data-category="${row[3]}">
+              <img src="${row[5]}" alt="${row[0]}" class="certificate-image">
+              <div class="certificate-content">
+                <span class="certificate-category">${row[3]}</span>
+                <h3>${row[0]}</h3>
+                <p>${row[4]}</p>
+                <div class="certificate-meta">
+                  <span><i class="fas fa-university"></i> ${row[1]}</span>
+                  <span><i class="far fa-calendar"></i> ${row[2]}</span>
+                </div>
+                <div class="certificate-footer">
+                  <a href="${row[5]}" target="_blank" class="certificate-link">View Original</a>
+                  <span class="certificate-rating"><i class="fas fa-star"></i> ${row[6]}</span>
+                </div>
               </div>
-              <div class="certificate-footer">
-                <a href="${row[5]}" target="_blank" class="certificate-link">View Certificate</a>
-                <span class="certificate-rating"><i class="fas fa-star"></i> ${row[6]}</span>
-              </div>
-            </div>
-          </div>`;
-        certContainer.innerHTML += card;
-      });
+            </div>`;
+        });
+      }
     }
-  } catch (error) {
-    console.error('Error updating from Sheets:', error);
-  }
+  } catch (error) { console.error('Sync Error:', error); }
 }
 
-document.addEventListener('DOMContentLoaded', updatePortfolioFromSheets);
-
+// --- 3. INITIALIZATION ---
+document.addEventListener("DOMContentLoaded", function () {
+  setInitialTheme();
+  fetchGitHubProjects(); // Your existing GitHub logic
+  updatePortfolioFromSheets(); // Call the Sheets API
+});
 
 // Add CSS for particles positioning and animations
 const style = document.createElement("style");
@@ -839,5 +848,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
 
