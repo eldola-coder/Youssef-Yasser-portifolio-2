@@ -1,11 +1,17 @@
-// Function to manually clear cache and reload fresh data from Excel
-function clearPortfolioCache() {
+window.clearPortfolioCache = function() {
+  console.log("Clearing cache...");
   localStorage.removeItem("portfolio_settings");
   localStorage.removeItem("portfolio_certs");
-  // This forces the page to reload, triggering the async fetches again
+  
+  // Optional: Add a visual hint so you know it worked
+  
+  
   location.reload(); 
-}
+};
 
+// Helper to handle LocalStorage
+const cacheData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+const getCachedData = (key) => JSON.parse(localStorage.getItem(key));
 
 // Theme functionality
 const themeToggle = document.getElementById("themeToggle");
@@ -498,8 +504,7 @@ function setupCertificateModal() {
 const SHEET_ID = "1qUjr34HZloU2QYjip8yAPwRS6FOAqRp0TPOnKnImKxs";
 const API_KEY = "AIzaSyDApsCPIpowQgZ1IwHmrk1VOGPRknBtJMg";
 
-const cacheData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
-const getCachedData = (key) => JSON.parse(localStorage.getItem(key));
+
 
 // Update fetchSettings to use Cache
 async function getSettings() {
