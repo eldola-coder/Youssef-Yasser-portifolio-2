@@ -119,9 +119,7 @@ function updateParticlesTheme(theme) {
     }
   }
 
-  setTimeout(() => {
-    initParticles();
-  }, 200);
+  
 }
 
 // Mobile menu toggle
@@ -625,4 +623,5 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
