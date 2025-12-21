@@ -1,3 +1,12 @@
+// Function to manually clear cache and reload fresh data from Excel
+function clearPortfolioCache() {
+  localStorage.removeItem("portfolio_settings");
+  localStorage.removeItem("portfolio_certs");
+  // This forces the page to reload, triggering the async fetches again
+  location.reload(); 
+}
+
+
 // Theme functionality
 const themeToggle = document.getElementById("themeToggle");
 let currentTheme = localStorage.getItem("theme") || "light";
@@ -601,13 +610,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setTimeout(hidePreloader, 400); 
   }
 });
-// Function to manually clear cache and reload fresh data from Excel
-function clearPortfolioCache() {
-  localStorage.removeItem("portfolio_settings");
-  localStorage.removeItem("portfolio_certs");
-  // This forces the page to reload, triggering the async fetches again
-  location.reload(); 
-}
+
 
 
 // Add CSS for particles positioning and animations
