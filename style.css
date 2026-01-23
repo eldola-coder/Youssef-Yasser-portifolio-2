@@ -15,7 +15,7 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #1a1a1a89;
+  --bg-color: #00000089;
   --text-color: #e0e0e0;
   --card-bg: #2d2d2d;
   --nav-bg: #2d2d2d;
@@ -1478,4 +1478,5 @@ h2 {
   opacity: 0;
   visibility: hidden;
 }
+
 
