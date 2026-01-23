@@ -51,7 +51,7 @@ function initParticles() {
 
   try {
     const theme = document.documentElement.getAttribute("data-theme");
-    const particleColor = theme === "dark" ? "#4da8da" : "#ca42f7ff";
+    const particleColor = theme === "dark" ? "#4da8da" : "#ca42f7";
     const lineColor = theme === "dark" ? "#4da8da" : "#d16af4";
 
     particlesJS("particles-js", {
@@ -642,6 +642,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
