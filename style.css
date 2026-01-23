@@ -464,10 +464,10 @@ h2 {
 /* About Page */
 .page-header {
   padding: 3rem 0;
-  background-color: var(--card-bg);
+  background-color: var(--bg-color);
   color: var(--text-color);
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  
   position: relative;
   z-index: 2;
 }
@@ -1478,5 +1478,6 @@ h2 {
   opacity: 0;
   visibility: hidden;
 }
+
 
 
