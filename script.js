@@ -239,7 +239,7 @@ function updateParticlesTheme(theme) {
     }
   }
 
-  setTimeout(initParticles, 100);
+  
 
   
 }
@@ -764,6 +764,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
