@@ -52,7 +52,7 @@ function initParticles() {
   try {
     const theme = document.documentElement.getAttribute("data-theme");
     const particleColor = theme === "dark" ? "#4da8da" : "#ca42f7";
-    const lineColor = theme === "dark" ? "#4da8da" : "#d16af4";
+    const lineColor = theme === "dark" ? "#4da8da" : "#ac4ccc";
 
     particlesJS("particles-js", {
       particles: {
@@ -118,7 +118,8 @@ function updateParticlesTheme(theme) {
       console.log("Error destroying particles:", error);
     }
   }
-
+  setTimeout(() => {    initParticles(); }, 10);
+  
   
 }
 
@@ -642,7 +643,6 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
-
 
 
 
