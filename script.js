@@ -118,6 +118,128 @@ function updateParticlesTheme(theme) {
       console.log("Error destroying particles:", error);
     }
   }
+  // Theme functionality
+const themeToggle = document.getElementById("themeToggle");
+let currentTheme = localStorage.getItem("theme") || "light";
+
+// Set initial theme
+function setInitialTheme() {
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  updateThemeIcon(currentTheme);
+  // Initialize particles after theme is set
+  setTimeout(initParticles, 100);
+}
+
+// Initialize theme ONCE
+setInitialTheme();
+
+// Theme toggle event
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const theme = document.documentElement.getAttribute("data-theme");
+    const newTheme = theme === "light" ? "dark" : "light";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateThemeIcon(newTheme);
+    updateParticlesTheme(newTheme);
+  });
+}
+
+function updateThemeIcon(theme) {
+  if (themeToggle) {
+    const icon = themeToggle.querySelector("i");
+    if (icon) {
+      icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+    }
+  }
+}
+
+// Particles.js initialization
+function initParticles() {
+  const particlesContainer = document.getElementById("particles-js");
+  if (!particlesContainer) {
+    console.log("Particles container not found");
+    return;
+  }
+
+  if (typeof particlesJS === "undefined") {
+    console.log("Particles.js not loaded yet");
+    setTimeout(initParticles, 100);
+    return;
+  }
+
+  try {
+    const theme = document.documentElement.getAttribute("data-theme");
+    const particleColor = theme === "dark" ? "#4da8da" : "#ca42f7ff";
+    const lineColor = theme === "dark" ? "#4da8da" : "#d16af4";
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: dd80, density: { enable: true, value_area: 800 } },
+        color: { value: particleColor },
+        shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false },
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: { enable: true, speed: 2, size_min: 0.1, sync: false },
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: lineColor,
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: { enable: true, rotateX: 600, rotateY: 1200 },
+        },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true,
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.8 } },
+          push: { particles_nb: 4 },
+        },
+      },
+      retina_detect: true,
+    });
+
+    console.log("Particles initialized successfully with", theme, "theme");
+  } catch (error) {
+    console.error("Error initializing particles:", error);
+  }
+}
+
+// Update particles when theme changes
+function updateParticlesTheme(theme) {
+  if (window.pJSDom && window.pJSDom.length > 0) {
+    try {
+      window.pJSDom[0].pJS.fn.vendors.destroypJS();
+      window.pJSDom = [];
+    } catch (error) {
+      console.log("Error destroying particles:", error);
+    }
+  }
+
+  setTimeout(initParticles, 100);
 
   
 }
@@ -642,6 +764,7 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
 
 
 
