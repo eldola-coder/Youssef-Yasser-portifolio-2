@@ -616,111 +616,8 @@ h2 {
   color: var(--secondary);
 }
 
-/* Contact Page */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
+/*certificates page */
 
-.contact-info h2 {
-  text-align: left;
-}
-
-.contact-info > p {
-  margin-bottom: 2rem;
-  color: var(--muted);
-}
-
-.contact-details {
-  margin-bottom: 2rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.contact-item i {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-top: 0.2rem;
-}
-
-.contact-item h3 {
-  margin-bottom: 0.3rem;
-  color: var(--secondary);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--card-bg);
-  border-radius: 5px;
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  transition: all 0.3s;
-  border: 1px solid var(--border);
-}
-
-.social-btn:hover {
-  background-color: var(--primary);
-  color: white;
-}
-
-.contact-form {
-  background-color: var(--card-bg);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.contact-form h2 {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--secondary);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-/* Additional styles specific to the certificates page */
 .certificate-hero {
   padding: 4rem 0;
   color: var(--text-color);
@@ -740,7 +637,7 @@ h2 {
 }
 
 .certificate-hero h1 {
-  color: var(--secondary);
+  color:var(--secondary);
   font-size: 3.5rem;
   margin-bottom: 1rem;
   position: relative;
@@ -1029,6 +926,114 @@ h2 {
 .modal-close:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
+
+
+
+/* Contact Page */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.contact-info h2 {
+  text-align: left;
+}
+
+.contact-info > p {
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+
+.contact-details {
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-top: 0.2rem;
+}
+
+.contact-item h3 {
+  margin-bottom: 0.3rem;
+  color: var(--secondary);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+}
+
+.social-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.contact-form {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.contact-form h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1483,4 +1488,3 @@ h2 {
   opacity: 0;
   visibility: hidden;
 }
-
