@@ -1183,9 +1183,19 @@ h2 {
   background-image: url("./media/udemy22.webp");
 }
 
-#ai2{
+#Coursera{
   background-image: url("./media/coursera2.png");
 }
+#nvidia{
+  background-image: url("./media/Nvidia.jpg");
+}
+#datacamp{
+  background-image: url("./media/datacamp.jpg");
+}
+#ITI{
+  background-image: url("./media/maharatechiti_logo.jpg");
+}
+
 
 /* Responsive Design */
 @media (max-width: 992px) {
