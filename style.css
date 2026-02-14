@@ -383,6 +383,58 @@ h2 {
   color: var(--muted);
 }
 
+.mainprojects{
+  display: flex;
+  justify-content: center;
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.mainprojectscards{
+    background-color: var(--card-bg);
+    width:1180px;
+    height: 600px;
+    border-radius: 10px ;
+    display: flex;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.mainprojectscards:hover {
+    transform: translateY(-10px);
+}
+
+
+.mainprojecttext{
+  background-color: var(--card-bg);
+  width: 60% ;
+  height: 100% ;
+  padding-top: 30px;
+  padding-left: 30px;
+  border-radius: 10px ;
+  justify-content: center;
+}
+
+
+.mainprojectimage{
+    width:40% ;
+    height: 93%;
+    background-image: url("./media/1764031045055.jpg");
+    border-radius: 10px ;
+    margin: 20px ;
+
+}
+
+#Card_text{
+  color:var(--primary);
+}
+
+#Card_description{
+  font-size: large;
+  padding-top: 30px ;
+}
+
 /* Skills Section */
 .skills-container {
   display: grid;
@@ -400,6 +452,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  
 }
 
 .skill-tag {
@@ -410,6 +463,12 @@ h2 {
   font-size: 0.9rem;
   font-weight: 500;
   border: 1px solid var(--border);
+  transition: transform 0.3s ;
+}
+
+.skill-tag:hover{
+    transform: translateY(-10px);
+
 }
 
 /* Footer */
