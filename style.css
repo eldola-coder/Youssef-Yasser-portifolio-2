@@ -383,56 +383,94 @@ h2 {
   color: var(--muted);
 }
 
-.mainprojects{
-  display: flex;
-  justify-content: center;
-  display: grid;
+/* --- Main Projects Section Fix --- */
+
+.mainprojects {
   width: 100%;
-  height: 100%;
+  padding: 5rem 0; /* عشان يكون فيه مسافة من فوق وتحت زي باقي السكاشن */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.mainprojectscards{
-    background-color: var(--card-bg);
-    width:1180px;
-    height: 600px;
-    border-radius: 10px ;
-    display: flex;
-    border: 1px solid var(--border);
-    transition: transform 0.3s ease;
+.mainprojectscards {
+  background-color: var(--card-bg);
+  /* بدل العرض الثابت، هنخليه ياخد 90% من الشاشة بحد أقصى 1180 بيكسل */
+  width: 90%; 
+  max-width: 1180px; 
+  /* الارتفاع نخليه auto عشان يطول ويقصر حسب الكلام اللي جواه */
+  min-height: 500px; 
+  height: auto; 
+  border-radius: 15px; /* زودنا الدوران شوية عشان يبقى مودرن */
+  display: flex;
+  flex-direction: row; /* الديفولت: جنب بعض */
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* عشان الصورة ماتخرجش بره الـ border-radius */
+  box-shadow: 0 5px 15px var(--shadow);
 }
 
 .mainprojectscards:hover {
-    transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--shadow);
 }
 
-
-.mainprojecttext{
+.mainprojecttext {
   background-color: var(--card-bg);
-  width: 60% ;
-  height: 100% ;
-  padding-top: 30px;
-  padding-left: 30px;
-  border-radius: 10px ;
+  width: 60%; /* العرض 60% للنص */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-
-.mainprojectimage{
-    width:40% ;
-    height: 93%;
-    background-image: url("./media/ttt.jpeg");
-    border-radius: 10px ;
-    margin: 20px ;
-
+.mainprojecttext h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
 }
 
-#Card_text{
-  color:var(--primary);
+.mainprojecttext p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
-#Card_description{
-  font-size: large;
-  padding-top: 30px ;
+.mainprojectimage {
+  width: 40%; 
+  background-image: url("./media/ttt.jpeg");
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  min-height: 300px; 
+}
+
+
+@media (max-width: 992px) {
+  .mainprojectscards {
+    flex-direction: column-reverse; 
+    width: 95%; 
+  }
+
+  .mainprojecttext {
+    width: 100%; 
+    padding: 30px 20px; 
+  }
+
+  .mainprojectimage {
+    width: 100%; 
+    height: 300px; 
+  }
+
+  .mainprojecttext h1 {
+    font-size: 1.5rem; 
+  }
+  
+  .mainprojecttext p {
+    font-size: 1rem;
+  }
 }
 
 /* Skills Section */
