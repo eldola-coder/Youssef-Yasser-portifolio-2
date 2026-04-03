@@ -1297,6 +1297,89 @@ h2 {
 
 }
 
+/* Proficiency Table Section */
+.proficiency-section {
+  padding: 5rem 0;
+  background-color: var(--bg-color);
+}
+
+.table-responsive {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.proficiency-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.proficiency-table th, 
+.proficiency-table td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-color);
+}
+
+.proficiency-table th {
+  background-color: var(--nav-bg);
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.proficiency-table tr:last-child td {
+  border-bottom: none;
+}
+
+.proficiency-table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.proficiency-table tbody tr:hover {
+  background-color: rgba(209, 106, 244, 0.05); /* لون خفيف جداً لما تقف على الصف */
+}
+
+/* Progress Bar inside Table */
+.table-progress {
+  width: 100%;
+  min-width: 150px;
+  height: 10px;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.table-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  width: 0; /* البداية من الصفر */
+  transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
+}
+
+/* Animation trigger */
+.table-row-animate {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.fade-in.table-row-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in .table-progress-fill {
+  width: var(--progress);
+}
+
 /* Experience Timeline */
 .experience-timeline {
   position: relative;
