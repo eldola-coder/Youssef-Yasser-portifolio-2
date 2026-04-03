@@ -557,7 +557,59 @@ function applySettings(data) {
   }
 }
 
+// جلب الداتا من شيت MainProjects
+async function fetchMainProjects() {
+  // بنستخدم نفس الـ SHEET_ID والـ API_KEY اللي إنت معرفهم فوق
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/MainProjects!A2:D20?key=${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
+    const rows = json.values || [];
 
+    return rows.filter(r => r[0]).map(r => ({
+      title: r[0] || "Project Title",
+      description: r[1] || "",
+      image: r[2] || "",
+      github: r[3] || "#"
+    }));
+  } catch (error) {
+    console.error("Error fetching main projects:", error);
+    return [];
+  }
+}
+
+// بناء الكروت في الموقع
+function generateMainProjects(projects) {
+  const container = document.getElementById("mainProjectsContainer");
+  if (!container) return;
+
+  container.innerHTML = ""; // مسح كلمة Loading
+
+  if (projects.length === 0) {
+    container.innerHTML = "<p class='loading'>No main projects found.</p>";
+    return;
+  }
+
+  projects.forEach(project => {
+    const card = document.createElement("div");
+    card.className = "mainprojectscards fade-in";
+    
+    card.innerHTML = `
+      <div class="mainprojecttext">
+        <h1>${project.title}</h1>
+        <p>${project.description}</p>
+        <div class="mainproject-actions">
+          <a href="${project.github}" target="_blank" class="btn btn-primary github-btn">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+      </div>    
+      <div class="mainprojectimage" style="background-image: url('${project.image}');">
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
 
 // Function to hide the preloader
 function hidePreloader() {
@@ -577,6 +629,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 1. Fetch all API data
     const settings = await fetchSettings();
     applySettings(settings);
+    const mainProjectsData = await fetchMainProjects();
+    generateMainProjects(mainProjectsData);
 
     const certContainer = document.getElementById("certificatesContainer");
     if (certContainer) {
