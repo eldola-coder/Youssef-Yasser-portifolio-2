@@ -600,7 +600,8 @@ function generateMainProjects(projects) {
         <p>${project.description}</p>
         <div class="mainproject-actions">
           <a href="${project.github}" target="_blank" class="btn btn-primary github-btn">
-            <i class="fab fa-github"></i> View on GitHub
+            <i class="fab ${project.github.includes('kaggle') ? 'fa-kaggle' : 'fa-github'}"></i> 
+            View on ${project.github.includes('kaggle') ? 'Kaggle' : 'GitHub'}
           </a>
         </div>
       </div>    
