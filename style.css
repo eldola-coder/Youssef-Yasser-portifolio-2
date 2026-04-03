@@ -1297,6 +1297,87 @@ h2 {
 
 }
 
+/* Experience Timeline */
+.experience-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 100%;
+  width: 2px;
+  background-color: var(--primary);
+}
+
+.experience-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 40px;
+}
+
+.exp-dot {
+  position: absolute;
+  left: 14px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 3px solid var(--bg-color);
+  z-index: 1;
+}
+
+.exp-content {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 15px var(--shadow);
+  transition: transform 0.3s;
+}
+
+.exp-content:hover {
+  transform: translateX(10px);
+}
+
+.exp-content h3 {
+  color: var(--secondary);
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.exp-content h4 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.exp-content h4 span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 10px;
+  }
+  .exp-dot {
+    left: 4px;
+  }
+  .experience-item {
+    padding-left: 40px;
+  }
+}
+
+
 @media (max-width: 480px) {
   .certificate-hero {
     padding: 3rem 0;
