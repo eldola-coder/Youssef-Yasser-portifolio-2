@@ -557,6 +557,57 @@ function applySettings(data) {
   }
 }
 
+
+// جلب بيانات الخبرة من الشيت
+async function fetchExperience() {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Experience!A2:D20?key=${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
+    const rows = json.values || [];
+
+    return rows.filter(r => r[0]).map(r => ({
+      role: r[0] || "",
+      company: r[1] || "",
+      duration: r[2] || "",
+      description: r[3] || ""
+    }));
+  } catch (error) {
+    console.error("Error fetching experience:", error);
+    return [];
+  }
+}
+
+// بناء سكشن الخبرة
+function generateExperience(experiences) {
+  const container = document.getElementById("experienceContainer");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (experiences.length === 0) {
+    container.innerHTML = "<p class='loading'>Experience details coming soon...</p>";
+    return;
+  }
+
+  experiences.forEach(exp => {
+    const item = document.createElement("div");
+    item.className = "experience-item fade-in";
+    
+    item.innerHTML = `
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <h3>${exp.role}</h3>
+        <h4>${exp.company} | <span>${exp.duration}</span></h4>
+        <p>${exp.description}</p>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+
+
 // جلب الداتا من شيت MainProjects
 async function fetchMainProjects() {
   // بنستخدم نفس الـ SHEET_ID والـ API_KEY اللي إنت معرفهم فوق
@@ -577,6 +628,8 @@ async function fetchMainProjects() {
     return [];
   }
 }
+
+
 
 // بناء الكروت في الموقع
 function generateMainProjects(projects) {
@@ -632,6 +685,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     applySettings(settings);
     const mainProjectsData = await fetchMainProjects();
     generateMainProjects(mainProjectsData);
+    const experienceData = await fetchExperience();
+    generateExperience(experienceData);
 
     const certContainer = document.getElementById("certificatesContainer");
     if (certContainer) {
