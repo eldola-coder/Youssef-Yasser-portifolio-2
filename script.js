@@ -241,7 +241,7 @@ const observer = new IntersectionObserver(function (entries) {
 
 function observeAnimatedElements() {
   const elementsToAnimate = document.querySelectorAll(
-    ".intro-card, .project-card, .interest-card, .certificate-card"
+    ".intro-card, .project-card, .interest-card, .certificate-card , .table-row-animate"
   );
   elementsToAnimate.forEach((el) => observer.observe(el));
 }
