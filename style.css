@@ -1791,10 +1791,13 @@ h2 {
 @media (max-width: 480px) {
   .proficiency-table th, 
   .proficiency-table td {
-    padding: 0.8rem 0.4rem; 
-    font-size: 0.9rem; /* ميبقاش أصغر من كده عشان يفضل مقروء */
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-color);
   }
-  
+  .proficiency-table tr:last-child td {
+    border-bottom: none;
+  }
   .table-progress {
     min-width: 80px; 
   }
