@@ -387,93 +387,128 @@ h2 {
 
 .mainprojects {
   width: 100%;
-  padding: 5rem 0; /* عشان يكون فيه مسافة من فوق وتحت زي باقي السكاشن */
+  padding: 5rem 0; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 3rem;
 }
 
 .mainprojectscards {
   background-color: var(--card-bg);
-  /* بدل العرض الثابت، هنخليه ياخد 90% من الشاشة بحد أقصى 1180 بيكسل */
   width: 90%; 
   max-width: 1180px; 
-  /* الارتفاع نخليه auto عشان يطول ويقصر حسب الكلام اللي جواه */
   min-height: 500px; 
-  height: auto; 
-  border-radius: 15px; /* زودنا الدوران شوية عشان يبقى مودرن */
+  border-radius: 20px; 
   display: flex;
-  flex-direction: row; /* الديفولت: جنب بعض */
+  flex-direction: row; 
+  align-items: stretch; 
   border: 1px solid var(--border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* عشان الصورة ماتخرجش بره الـ border-radius */
-  box-shadow: 0 5px 15px var(--shadow);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px var(--shadow);
+  /* السر الأول: مبطن الكارت بالكامل عشان الصورة متلمسش الحواف */
+  padding: 20px; 
 }
 
 .mainprojectscards:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px var(--shadow);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow);
 }
 
 .mainprojecttext {
-  background-color: var(--card-bg);
-  width: 60%; /* العرض 60% للنص */
-  padding: 40px;
+  width: 55%; 
+  /* ظبطنا المسافات عشان الكلام ميبقاش لازق في الصورة */
+  padding: 30px 40px 30px 20px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .mainprojecttext h1 {
-  font-size: 1.8rem;
+  color: var(--secondary);
+  font-size: 2rem; 
   margin-bottom: 1.5rem;
-  line-height: 1.3;
-  color: var(--primary);
+  line-height: 1.4;
+  font-weight: 700;
 }
 
 .mainprojecttext p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-color);
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
+.mainproject-actions {
+  margin-top: 2rem;
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.github-btn i {
+  font-size: 1.3rem;
+}
+
+/* =========================================
+   التصميم الجديد للصورة (Floating Image)
+   ========================================= */
 .mainprojectimage {
-  width: 40%; 
+  width: 45%; 
   background-image: url("./media/ttt.jpeg");
   background-position: center;
+  /* لو لقيت أطراف الرسمة البيانية مقصوصة، غير cover لكلمة contain */
   background-size: cover; 
   background-repeat: no-repeat;
-  min-height: 300px; 
+  background-color: #ffffff; /* عشان الرسمة البيانية تبان نضيفة لو استخدمت contain */
+  
+  /* السر التاني: حواف ناعمة، شادو، ومسافات للصورة نفسها */
+  border-radius: 16px; 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+  margin: 15px 15px 15px 0; 
+  min-height: 350px; 
+  transition: transform 0.3s ease;
 }
 
+.mainprojectimage:hover {
+  transform: scale(1.03); /* زووم خفيف ولطيف للصورة لما تقف عليها */
+}
 
+/* تظبيط مقاسات الموبايل والتابلت */
 @media (max-width: 992px) {
   .mainprojectscards {
     flex-direction: column-reverse; 
-    width: 95%; 
+    padding: 15px; /* قللنا الـ padding على الموبايل */
   }
 
   .mainprojecttext {
     width: 100%; 
-    padding: 30px 20px; 
+    padding: 20px 10px; 
   }
 
   .mainprojectimage {
     width: 100%; 
     height: 300px; 
+    margin: 0; /* لغينا المارجن عشان الصورة تاخد مساحتها على الموبايل */
+    border-radius: 12px;
   }
 
   .mainprojecttext h1 {
-    font-size: 1.5rem; 
+    font-size: 1.6rem; 
   }
   
   .mainprojecttext p {
     font-size: 1rem;
   }
 }
-
 /* Skills Section */
 .skills-container {
   display: grid;
@@ -1598,4 +1633,3 @@ h2 {
   opacity: 0;
   visibility: hidden;
 }
-
