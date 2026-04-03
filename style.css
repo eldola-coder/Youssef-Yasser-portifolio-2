@@ -1768,7 +1768,7 @@ h2 {
    ========================================= */
 @media (max-width: 768px) {
   .table-responsive {
-    width: 200%; /* الجدول ياخد العرض كله */
+    width: 80%; /* الجدول ياخد العرض كله */
   }
 
   .proficiency-table th, 
@@ -1779,7 +1779,7 @@ h2 {
 
   .table-progress {
     min-width: 70px; /* نصغر الشريط سِنة عشان يدي مساحة للكلام */
-    height: 10px;
+    height: 8px;
   }
 }
 
