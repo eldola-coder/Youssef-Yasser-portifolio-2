@@ -1764,42 +1764,46 @@ h2 {
 }
 
 /* =========================================
-   تظبيط مقاسات جدول المهارات على الموبايل (حجم مريح للعين)
+   تظبيط مقاسات جدول المهارات على كل الموبايلات 
    ========================================= */
 @media (max-width: 768px) {
   .table-responsive {
-    width: 95%; /* بنخلي الجدول ياخد معظم الشاشة عشان مساحته تكبر */
+    width: 100%; /* الجدول ياخد العرض كله */
   }
 
   .proficiency-table th, 
   .proficiency-table td {
-    padding: 1rem 0.6rem; /* كبرنا المسافات تاني */
-    font-size: 0.95rem; /* خط مقروء وواضح */
+    padding: 0.8rem 0.5rem !important; 
+    font-size: 0.9rem; 
   }
 
   .table-progress {
-    min-width: 90px; /* طولنا الشريط شوية */
-    height: 10px; /* رجعنا سمك الشريط زي ما كان */
-  }
-
-  .proficiency-table td i {
-    margin-right: 6px !important;
-    font-size: 1rem; /* كبرنا الأيقونات */
+    min-width: 70px; /* نصغر الشريط سِنة عشان يدي مساحة للكلام */
+    height: 8px;
   }
 }
 
 @media (max-width: 480px) {
+  /* دي التظبيطة الخاصة بالشاشات الأصغر من ايفون 11 */
   .proficiency-table th, 
   .proficiency-table td {
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-color);
+    padding: 0.6rem 0.2rem !important; /* نقلل المسافات الفاضية حوالين الكلام */
+    font-size: 0.8rem; /* نصغر الخط حاجة بسيطة جداً */
   }
-  .proficiency-table tr:last-child td {
-    border-bottom: none;
+  
+  /* السر هنا: بيمنع اسم التكنولوجيا إنه يتكسر على سطرين أبداً */
+  .proficiency-table th:first-child,
+  .proficiency-table td:first-child {
+    white-space: nowrap; 
   }
+
   .table-progress {
-    min-width: 80px; 
+    min-width: 50px; /* الشريط هيبقى مرن أكتر */
+  }
+
+  .proficiency-table td i {
+    margin-right: 4px !important;
+    font-size: 0.85rem;
   }
 }
 
