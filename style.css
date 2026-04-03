@@ -466,7 +466,7 @@ h2 {
   background-image: url("./media/ttt.jpeg");
   background-position: center;
   /* لو لقيت أطراف الرسمة البيانية مقصوصة، غير cover لكلمة contain */
-  background-size: cover; 
+  background-size: contain; 
   background-repeat: no-repeat;
   background-color: #ffffff; /* عشان الرسمة البيانية تبان نضيفة لو استخدمت contain */
   
