@@ -235,6 +235,19 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.btn-accent {
+  background-color: var(--accent);
+  color: #000000 !important; 
+  border: 2px solid var(--accent);
+  font-weight: 700;
+}
+
+.btn-accent:hover {
+  background-color: transparent;
+  color: var(--accent) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 .hero-image {
   flex: 1;
   display: flex;
