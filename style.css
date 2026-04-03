@@ -1763,7 +1763,42 @@ h2 {
     }
 }
 
+/* =========================================
+   تظبيط مقاسات جدول المهارات على الموبايل
+   ========================================= */
+@media (max-width: 768px) {
+  /* تقليل المسافات الداخلية للخلايا وتصغير الخط */
+  .proficiency-table th, 
+  .proficiency-table td {
+    padding: 0.8rem 0.5rem; 
+    font-size: 0.85rem; 
+  }
 
+  /* تقليل عرض الشريط عشان مايعملش سكرول بالعرض */
+  .table-progress {
+    min-width: 80px; /* قللناها من 150 لـ 80 */
+    height: 8px; /* رفعنا الشريط حاجة بسيطة عشان يبقى متناسق */
+  }
+
+  /* تصغير مسافة الأيقونة */
+  .proficiency-table td i {
+    margin-right: 4px !important;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* على الشاشات الصغيرة أوي هنصغر الخط كمان سِنة */
+  .proficiency-table th, 
+  .proficiency-table td {
+    padding: 0.6rem 0.3rem; 
+    font-size: 0.75rem; 
+  }
+  
+  .table-progress {
+    min-width: 60px; 
+  }
+}
 
 /* Preloader Styles */
 #preloader {
@@ -1810,3 +1845,6 @@ h2 {
   opacity: 0;
   visibility: hidden;
 }
+
+
+
