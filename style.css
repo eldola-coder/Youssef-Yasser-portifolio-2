@@ -1764,39 +1764,39 @@ h2 {
 }
 
 /* =========================================
-   تظبيط مقاسات جدول المهارات على الموبايل
+   تظبيط مقاسات جدول المهارات على الموبايل (حجم مريح للعين)
    ========================================= */
 @media (max-width: 768px) {
-  /* تقليل المسافات الداخلية للخلايا وتصغير الخط */
+  .table-responsive {
+    width: 95%; /* بنخلي الجدول ياخد معظم الشاشة عشان مساحته تكبر */
+  }
+
   .proficiency-table th, 
   .proficiency-table td {
-    padding: 0.8rem 0.5rem; 
-    font-size: 0.85rem; 
+    padding: 1rem 0.6rem; /* كبرنا المسافات تاني */
+    font-size: 0.95rem; /* خط مقروء وواضح */
   }
 
-  /* تقليل عرض الشريط عشان مايعملش سكرول بالعرض */
   .table-progress {
-    min-width: 80px; /* قللناها من 150 لـ 80 */
-    height: 8px; /* رفعنا الشريط حاجة بسيطة عشان يبقى متناسق */
+    min-width: 90px; /* طولنا الشريط شوية */
+    height: 10px; /* رجعنا سمك الشريط زي ما كان */
   }
 
-  /* تصغير مسافة الأيقونة */
   .proficiency-table td i {
-    margin-right: 4px !important;
-    font-size: 0.9rem;
+    margin-right: 6px !important;
+    font-size: 1rem; /* كبرنا الأيقونات */
   }
 }
 
 @media (max-width: 480px) {
-  /* على الشاشات الصغيرة أوي هنصغر الخط كمان سِنة */
   .proficiency-table th, 
   .proficiency-table td {
-    padding: 0.6rem 0.3rem; 
-    font-size: 0.75rem; 
+    padding: 0.8rem 0.4rem; 
+    font-size: 0.9rem; /* ميبقاش أصغر من كده عشان يفضل مقروء */
   }
   
   .table-progress {
-    min-width: 60px; 
+    min-width: 80px; 
   }
 }
 
