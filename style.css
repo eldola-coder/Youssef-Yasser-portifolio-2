@@ -1763,7 +1763,40 @@ h2 {
     }
 }
 
+/* Mobile Responsiveness for Featured Card */
+@media (max-width: 992px) {
+  .featured-card {
+    /* Changed from column-reverse to column so the image is on top */
+    flex-direction: column; 
+  }
+  
+  .featured-image {
+    width: 100%;
+    height: 200px; /* Slightly smaller height for mobile */
+    min-height: 200px;
+    /* Optional: helps the logo fit better if it's getting cut off */
+    background-size: contain; 
+    background-color: #ffffff; /* Keeps the white background clean */
+  }
+  
+  .featured-content {
+    width: 100%;
+    padding: 2rem;
+  }
+  
+  .featured-content h3 {
+    font-size: 1.8rem;
+    margin-top: 0.5rem; /* Gives a little breathing room */
+  }
 
+  /* Make the badge slightly smaller on mobile so it doesn't take over */
+  .featured-badge {
+    font-size: 0.75rem;
+    padding: 5px 35px;
+    top: 15px;
+    right: -35px;
+  }
+}
 
 /* --- IPAD LANDSCAPE / WIDE TABLET ALIGNMENT FIX (e.g., 1024px to 1200px) --- */
 @media (min-width: 1024px) and (max-width: 1200px) {
