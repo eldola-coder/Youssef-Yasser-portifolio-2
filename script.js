@@ -606,7 +606,61 @@ function generateExperience(experiences) {
   });
 }
 
+// Fetch Featured / Offer Letter Data
+async function fetchFeatured() {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Featured!A2:E2?key=${API_KEY}`;
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
+    const rows = json.values || [];
+    
+    // We only need the first row for the main highlight
+    if (rows.length > 0 && rows[0][0]) {
+      const r = rows[0];
+      return {
+        title: r[0] || "",
+        description: r[1] || "",
+        image: r[2] || "",
+        link: r[3] || "#",
+        badge: r[4] || "Offer Letter" // Default text if empty
+      };
+    }
+    return null;
+  } catch (error) {
+    console.error("Error fetching featured highlight:", error);
+    return null;
+  }
+}
 
+// Generate Featured Card
+function generateFeatured(data) {
+  const container = document.getElementById("featuredContainer");
+  const section = document.getElementById("featured");
+  
+  if (!container || !section) return;
+
+  if (!data) {
+    // Hide the section completely if there's no data in the sheet
+    section.style.display = "none";
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="featured-card fade-in">
+      <div class="featured-badge">${data.badge}</div>
+      <div class="featured-image" style="background-image: url('${data.image}');"></div>
+      <div class="featured-content">
+        <h3>${data.title}</h3>
+        <p>${data.description}</p>
+        <div>
+          <a href="${data.link}" target="_blank" class="btn btn-primary">
+            View Document <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
 // جلب الداتا من شيت MainProjects
 async function fetchMainProjects() {
@@ -683,6 +737,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 1. Fetch all API data
     const settings = await fetchSettings();
     applySettings(settings);
+    const featuredData = await fetchFeatured();
+    generateFeatured(featuredData);
     const mainProjectsData = await fetchMainProjects();
     generateMainProjects(mainProjectsData);
     const experienceData = await fetchExperience();
