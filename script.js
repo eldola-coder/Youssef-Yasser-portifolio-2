@@ -654,7 +654,7 @@ function generateFeatured(data) {
         <p>${data.description}</p>
         <div>
           <a href="${data.link}" target="_blank" class="btn btn-primary">
-            View Document <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
+            View Demo <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
           </a>
         </div>
       </div>
